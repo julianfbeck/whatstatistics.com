@@ -12,7 +12,6 @@ import '../styles/global.css';
 		<!-- SEO Meta Tags -->
 		<title>WhatStats - WhatsApp Chat Analytics & Statistics</title>
 		<meta name="description" content="Analyze your WhatsApp chats with beautiful statistics. Track messages, emoji usage, and get your Chat Wrapped. Privacy-focused analytics that work locally on your device." />
-		<meta name="keywords" content="WhatsApp analytics, chat statistics, WhatsApp export, chat analysis, message tracking, emoji usage, Chat Wrapped" />
 		<meta name="author" content="WhatStats" />
 		
 		<!-- Open Graph / Facebook -->
@@ -61,7 +60,7 @@ import '../styles/global.css';
 				<div class="flex items-center justify-between h-20">
 					<!-- Logo -->
 					<div class="flex items-center space-x-3">
-						<img src="/icon.jpg" alt="WhatStats" class="w-10 h-10 rounded-lg" />
+						<img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg" />
 						<span class="text-xl font-bold gradient-text">WhatStats</span>
 					</div>
 					
@@ -75,11 +74,34 @@ import '../styles/global.css';
 					</div>
 					
 					<!-- Mobile Menu Button -->
-					<button class="md:hidden glass p-2 rounded-xl">
-						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<button 
+						id="mobile-menu-button" 
+						class="md:hidden glass p-2 rounded-xl"
+						aria-label="Toggle mobile menu"
+						aria-expanded="false"
+						aria-controls="mobile-menu">
+						<svg id="menu-icon" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
 						</svg>
+						<svg id="close-icon" class="w-6 h-6 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
 					</button>
+				</div>
+				
+				<!-- Mobile Menu -->
+				<div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-slate-900 border-t border-white/10">
+					<div class="px-6 py-4 space-y-4">
+						<a href="#home" class="block text-white hover:text-green-400 transition-colors font-medium py-2">Home</a>
+						<a href="#features" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Features</a>
+						<a href="#usecases" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Use Cases</a>
+						<a href="#reviews" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Reviews</a>
+						<a href="/faq" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">FAQ</a>
+						<a href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8" 
+						   class="block bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl px-4 py-3 text-center mt-4">
+							Download App
+						</a>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -156,26 +178,36 @@ import '../styles/global.css';
 					</div>
 					
 					<!-- Right Image -->
-					<div class="relative animate-slide-up max-w-md mx-auto" style="animation-delay: 0.2s;">
+					<div class="relative animate-slide-up max-w-xs sm:max-w-sm lg:max-w-md mx-auto" style="animation-delay: 0.2s;">
 						<!-- Background Glow -->
 						<div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-3xl transform scale-105"></div>
 						
 						<!-- Main Image Container -->
-						<div class="relative glass rounded-3xl p-4">
+						<div class="relative glass rounded-3xl p-3 lg:p-4">
 							<img src="Hero.png" 
-								 alt="WhatStats App Interface" 
-								 class="rounded-2xl w-full shadow-2xl" />
+								 alt="Mobile app showing WhatsApp chat analytics dashboard with colorful charts and statistics" 
+								 class="rounded-2xl w-full shadow-2xl max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] object-contain" />
+							
+							<!-- Share Button -->
+							<button 
+								id="share-stats-btn" 
+								class="absolute top-4 right-4 glass px-3 py-2 rounded-xl hover:bg-green-500/20 transition-colors group"
+								aria-label="Share WhatStats analytics">
+								<svg class="w-4 h-4 text-green-400 group-hover:text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+								</svg>
+							</button>
 							
 							<!-- Floating UI Elements -->
-							<div class="absolute top-8 left-8 glass px-4 py-2 rounded-xl animate-float">
+							<div class="absolute top-8 left-4 glass px-3 py-2 rounded-xl animate-float">
 								<div class="flex items-center space-x-2">
-									<div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-									<span class="text-sm text-white font-medium">Live Analytics</span>
+									<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+									<span class="text-xs text-white font-medium">Live Analytics</span>
 								</div>
 							</div>
 							
-							<div class="absolute bottom-8 right-8 glass px-4 py-2 rounded-xl animate-float" style="animation-delay: -2s;">
-								<span class="text-sm text-green-400 font-medium">✨ Chat Wrapped</span>
+							<div class="absolute bottom-8 right-4 glass px-3 py-2 rounded-xl animate-float" style="animation-delay: -2s;">
+								<span class="text-xs text-green-400 font-medium">✨ Chat Wrapped</span>
 							</div>
 						</div>
 					</div>
@@ -443,7 +475,7 @@ import '../styles/global.css';
 						<div class="relative glass rounded-3xl p-4 animate-float">
 							<div class="relative overflow-hidden rounded-2xl">
 								<img src="/Second.png" 
-									 alt="Chat Wrapped Experience" 
+									 alt="Chat Wrapped interface displaying personalized messaging statistics and year in review" 
 									 class="w-full shadow-2xl rounded-2xl" />
 								
 								<!-- Overlay Elements -->
@@ -454,9 +486,12 @@ import '../styles/global.css';
 									</div>
 								</div>
 								
-								<div class="absolute bottom-6 right-6 glass px-4 py-2 rounded-xl">
-									<span class="text-sm text-green-400 font-medium">✨ Ready to Share</span>
-								</div>
+								<button 
+									id="share-wrapped-btn" 
+									class="absolute bottom-6 right-6 glass px-4 py-2 rounded-xl hover:bg-green-500/20 transition-colors group"
+									aria-label="Share your Chat Wrapped">
+									<span class="text-sm text-green-400 font-medium group-hover:text-green-300">✨ Share Your Wrapped</span>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -525,32 +560,6 @@ import '../styles/global.css';
 					</div>
 					
 					<!-- Use Case 4 -->
-					<div class="group card-modern glass rounded-3xl p-8 text-center">
-						<div class="w-20 h-20 glass-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-							<svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"/>
-							</svg>
-						</div>
-						<h3 class="text-2xl font-bold mb-4 text-white">Work Teams</h3>
-						<p class="text-slate-300 leading-relaxed">
-							Analyze team communication patterns, see project timelines, and understand collaboration dynamics in your workplace chats.
-						</p>
-					</div>
-					
-					<!-- Use Case 5 -->
-					<div class="group card-modern glass rounded-3xl p-8 text-center">
-						<div class="w-20 h-20 glass-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-							<svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-							</svg>
-						</div>
-						<h3 class="text-2xl font-bold mb-4 text-white">Study Groups</h3>
-						<p class="text-slate-300 leading-relaxed">
-							Track study session patterns, see who contributes most to discussions, and analyze your academic collaboration over time.
-						</p>
-					</div>
-					
-					<!-- Use Case 6 -->
 					<div class="group card-modern glass rounded-3xl p-8 text-center">
 						<div class="w-20 h-20 glass-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
 							<svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -796,7 +805,7 @@ import '../styles/global.css';
 			<div class="container mx-auto px-6">
 				<div class="text-center">
 					<div class="flex items-center justify-center mb-6">
-						<img src="/icon.jpg" alt="WhatStats" class="w-10 h-10 rounded-lg mr-3" />
+						<img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg mr-3" />
 						<span class="text-2xl font-bold text-white">WhatStats</span>
 					</div>
 					<p class="text-gray-400 mb-6">
@@ -820,5 +829,123 @@ import '../styles/global.css';
 				</div>
 			</div>
 		</footer>
+
+		<script>
+			// Mobile menu functionality
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileMenuButton = document.getElementById('mobile-menu-button');
+				const mobileMenu = document.getElementById('mobile-menu');
+				const menuIcon = document.getElementById('menu-icon');
+				const closeIcon = document.getElementById('close-icon');
+
+				mobileMenuButton.addEventListener('click', function() {
+					const isHidden = mobileMenu.classList.contains('hidden');
+					
+					if (isHidden) {
+						mobileMenu.classList.remove('hidden');
+						menuIcon.classList.add('hidden');
+						closeIcon.classList.remove('hidden');
+						mobileMenuButton.setAttribute('aria-expanded', 'true');
+					} else {
+						mobileMenu.classList.add('hidden');
+						menuIcon.classList.remove('hidden');
+						closeIcon.classList.add('hidden');
+						mobileMenuButton.setAttribute('aria-expanded', 'false');
+					}
+				});
+
+				// Close mobile menu when clicking on links
+				const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+				mobileMenuLinks.forEach(link => {
+					link.addEventListener('click', function() {
+						mobileMenu.classList.add('hidden');
+						menuIcon.classList.remove('hidden');
+						closeIcon.classList.add('hidden');
+						mobileMenuButton.setAttribute('aria-expanded', 'false');
+					});
+				});
+
+				// Close mobile menu when clicking outside
+				document.addEventListener('click', function(event) {
+					if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+						mobileMenu.classList.add('hidden');
+						menuIcon.classList.remove('hidden');
+						closeIcon.classList.add('hidden');
+						mobileMenuButton.setAttribute('aria-expanded', 'false');
+					}
+				});
+			});
+
+			// Share functionality
+			async function shareStats(title, text, url) {
+				if (navigator.share) {
+					try {
+						await navigator.share({
+							title: title,
+							text: text,
+							url: url
+						});
+					} catch (error) {
+						// Fallback to clipboard
+						copyToClipboard(url);
+					}
+				} else {
+					// Fallback to clipboard
+					copyToClipboard(url);
+				}
+			}
+
+			function copyToClipboard(text) {
+				navigator.clipboard.writeText(text).then(() => {
+					showToast('Link copied to clipboard!');
+				}).catch(() => {
+					// Fallback for older browsers
+					const textArea = document.createElement('textarea');
+					textArea.value = text;
+					document.body.appendChild(textArea);
+					textArea.select();
+					document.execCommand('copy');
+					document.body.removeChild(textArea);
+					showToast('Link copied to clipboard!');
+				});
+			}
+
+			function showToast(message) {
+				const toast = document.createElement('div');
+				toast.className = 'fixed top-20 right-4 glass px-4 py-2 rounded-xl text-white z-50 animate-slide-up';
+				toast.textContent = message;
+				document.body.appendChild(toast);
+				
+				setTimeout(() => {
+					toast.remove();
+				}, 3000);
+			}
+
+			// Share buttons event listeners
+			document.addEventListener('DOMContentLoaded', function() {
+				const shareStatsBtn = document.getElementById('share-stats-btn');
+				const shareWrappedBtn = document.getElementById('share-wrapped-btn');
+
+				if (shareStatsBtn) {
+					shareStatsBtn.addEventListener('click', function() {
+						shareStats(
+							'WhatStats - WhatsApp Analytics',
+							'Check out WhatStats! Analyze your WhatsApp chats with beautiful statistics and get your Chat Wrapped. Privacy-focused analytics that work locally on your device.',
+							window.location.href
+						);
+					});
+				}
+
+				if (shareWrappedBtn) {
+					shareWrappedBtn.addEventListener('click', function() {
+						shareStats(
+							'My Chat Wrapped - WhatStats',
+							'I just discovered my chat personality with WhatStats! Get your own Chat Wrapped and see your WhatsApp insights.',
+							window.location.href + '#chat-wrapped'
+						);
+					});
+				}
+			});
+		</script>
 	</body>
 </html>

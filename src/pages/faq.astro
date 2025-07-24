@@ -12,7 +12,6 @@ import '../styles/global.css';
 		<!-- SEO Meta Tags -->
 		<title>FAQ - WhatStats | WhatsApp Chat Analytics Questions</title>
 		<meta name="description" content="Frequently asked questions about WhatStats - WhatsApp chat analytics app. Learn about privacy, features, Chat Wrapped, and how to use the app." />
-		<meta name="keywords" content="WhatStats FAQ, WhatsApp analytics questions, chat statistics help, privacy questions, Chat Wrapped help" />
 		<meta name="author" content="WhatStats" />
 		
 		<!-- Open Graph / Facebook -->
@@ -42,7 +41,7 @@ import '../styles/global.css';
 				<div class="flex items-center justify-between h-20">
 					<!-- Logo -->
 					<a href="/" class="flex items-center space-x-3">
-						<img src="/icon.jpg" alt="WhatStats" class="w-10 h-10 rounded-lg" />
+						<img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg" />
 						<span class="text-xl font-bold gradient-text">WhatStats</span>
 					</a>
 					
@@ -56,11 +55,34 @@ import '../styles/global.css';
 					</div>
 					
 					<!-- Mobile Menu Button -->
-					<button class="md:hidden glass p-2 rounded-xl">
-						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<button 
+						id="mobile-menu-button" 
+						class="md:hidden glass p-2 rounded-xl"
+						aria-label="Toggle mobile menu"
+						aria-expanded="false"
+						aria-controls="mobile-menu">
+						<svg id="menu-icon" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
 						</svg>
+						<svg id="close-icon" class="w-6 h-6 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
 					</button>
+				</div>
+				
+				<!-- Mobile Menu -->
+				<div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-slate-900 border-t border-white/10">
+					<div class="px-6 py-4 space-y-4">
+						<a href="/" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Home</a>
+						<a href="/#features" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Features</a>
+						<a href="/#usecases" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Use Cases</a>
+						<a href="/#reviews" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Reviews</a>
+						<a href="/faq" class="block text-white hover:text-green-400 transition-colors font-medium py-2">FAQ</a>
+						<a href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8" 
+						   class="block bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl px-4 py-3 text-center mt-4">
+							Download App
+						</a>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -215,7 +237,7 @@ import '../styles/global.css';
 			<div class="container mx-auto px-6">
 				<div class="text-center">
 					<div class="flex items-center justify-center mb-6">
-						<img src="/icon.jpg" alt="WhatStats" class="w-10 h-10 rounded-lg mr-3" />
+						<img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg mr-3" />
 						<span class="text-2xl font-bold text-white">WhatStats</span>
 					</div>
 					<p class="text-gray-400 mb-6">
@@ -242,5 +264,54 @@ import '../styles/global.css';
 				</div>
 			</div>
 		</footer>
+
+		<script>
+			// Mobile menu functionality
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileMenuButton = document.getElementById('mobile-menu-button');
+				const mobileMenu = document.getElementById('mobile-menu');
+				const menuIcon = document.getElementById('menu-icon');
+				const closeIcon = document.getElementById('close-icon');
+
+				if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+					mobileMenuButton.addEventListener('click', function() {
+						const isHidden = mobileMenu.classList.contains('hidden');
+						
+						if (isHidden) {
+							mobileMenu.classList.remove('hidden');
+							menuIcon.classList.add('hidden');
+							closeIcon.classList.remove('hidden');
+							mobileMenuButton.setAttribute('aria-expanded', 'true');
+						} else {
+							mobileMenu.classList.add('hidden');
+							menuIcon.classList.remove('hidden');
+							closeIcon.classList.add('hidden');
+							mobileMenuButton.setAttribute('aria-expanded', 'false');
+						}
+					});
+
+					// Close mobile menu when clicking on links
+					const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+					mobileMenuLinks.forEach(link => {
+						link.addEventListener('click', function() {
+							mobileMenu.classList.add('hidden');
+							menuIcon.classList.remove('hidden');
+							closeIcon.classList.add('hidden');
+							mobileMenuButton.setAttribute('aria-expanded', 'false');
+						});
+					});
+
+					// Close mobile menu when clicking outside
+					document.addEventListener('click', function(event) {
+						if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+							mobileMenu.classList.add('hidden');
+							menuIcon.classList.remove('hidden');
+							closeIcon.classList.add('hidden');
+							mobileMenuButton.setAttribute('aria-expanded', 'false');
+						}
+					});
+				}
+			});
+		</script>
 	</body>
 </html>
