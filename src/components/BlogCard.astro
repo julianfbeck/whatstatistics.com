@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const slug = post.slug.replace(/^en\//, '');
+const href = `/blog/${slug}`;
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={href} class="group block">
+  <article class="bg-slate-900/70 rounded-2xl border border-white/10 overflow-hidden hover:border-green-500/40 transition-all duration-200 h-full flex flex-col">
+    {post.data.coverImage ? (
+      <div class="aspect-video overflow-hidden">
+        <img
+          src={post.data.coverImage}
+          alt={post.data.title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+    ) : post.data.emojiCover && (
+      <div
+        class="aspect-video flex items-center justify-center group-hover:scale-105 transition-transform duration-300"
+        style={`background: linear-gradient(135deg, ${post.data.gradientFrom || '#22c55e'}, ${post.data.gradientTo || '#10b981'})`}
+      >
+        <span class="text-6xl">{post.data.emojiCover}</span>
+      </div>
+    )}
+    <div class="p-6 flex flex-col flex-grow">
+      {post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-3">
+          {post.data.tags.slice(0, 3).map((tag) => (
+            <span class="text-xs px-2 py-1 bg-green-500/15 text-green-300 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <h2 class="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:to-emerald-400 transition-all">
+        {post.data.title}
+      </h2>
+      <p class="text-slate-300 text-sm mb-4 flex-grow">
+        {post.data.description}
+      </p>
+      <div class="flex items-center justify-between text-sm text-slate-400 mt-auto">
+        <span>{post.data.author}</span>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formattedDate}
+        </time>
+      </div>
+    </div>
+  </article>
+</a>

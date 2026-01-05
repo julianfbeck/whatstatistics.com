@@ -1,0 +1,154 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import BlogAppPromo from "../../components/blog/BlogAppPromo.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ id, data }) =>
+    id.startsWith("en/") && !data.draft
+  );
+
+  return posts.map((post) => ({
+    params: { slug: post.slug.replace("en/", "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const slug = post.slug.replace("en/", "");
+const ogImage = post.data.coverImage || "/og-image.jpg";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  { label: post.data.title },
+];
+
+const formattedDate = post.data.pubDate.toLocaleDateString("en", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const articleData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  author: {
+    "@type": "Person",
+    name: post.data.author,
+  },
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.updatedDate?.toISOString() || post.data.pubDate.toISOString(),
+  publisher: {
+    "@type": "Organization",
+    name: "WhatStats",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://whatstatistics.com/icon.jpg",
+    },
+  },
+  image: post.data.coverImage
+    ? `https://whatstatistics.com${post.data.coverImage}`
+    : `https://whatstatistics.com${ogImage}`,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://whatstatistics.com/blog/${slug}`,
+  },
+};
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={ogImage}
+  type="article"
+>
+  <main class="bg-black min-h-screen">
+    <article class="pt-8 pb-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+          <Breadcrumbs items={breadcrumbs} />
+        </div>
+
+        {post.data.coverImage ? (
+          <div
+            class="w-full h-72 md:h-80 lg:h-96 rounded-2xl mb-8 border border-white/10 flex items-center justify-center overflow-hidden"
+            style={`background: linear-gradient(135deg, ${post.data.gradientFrom || '#22c55e'}, ${post.data.gradientTo || '#10b981'})`}
+          >
+            <img
+              src={post.data.coverImage}
+              alt={post.data.title}
+              class="max-h-64 md:max-h-72 lg:max-h-80 w-auto object-contain drop-shadow-2xl"
+            />
+          </div>
+        ) : post.data.emojiCover && (
+          <div
+            class="w-full h-56 md:h-64 rounded-2xl mb-8 border border-white/10 flex items-center justify-center"
+            style={`background: linear-gradient(135deg, ${post.data.gradientFrom || '#22c55e'}, ${post.data.gradientTo || '#10b981'})`}
+          >
+            <span class="text-8xl">{post.data.emojiCover}</span>
+          </div>
+        )}
+
+        <header class="mb-12">
+          {post.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.data.tags.map((tag) => (
+                <span class="text-sm px-3 py-1 bg-green-500/20 text-green-300 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            {post.data.title}
+          </h1>
+
+          <div class="flex items-center gap-4 text-gray-400">
+            <span>By {post.data.author}</span>
+            <span class="text-gray-600">•</span>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {formattedDate}
+            </time>
+          </div>
+        </header>
+
+        <div class="blog-content" data-pagefind-body>
+          <Content />
+        </div>
+
+        <BlogAppPromo />
+
+        <div class="mt-16 pt-8 border-t border-white/10">
+          <a
+            href="/blog"
+            class="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Back to blog
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleData)} />
+</BlogLayout>

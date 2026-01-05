@@ -70,6 +70,7 @@ import '../styles/global.css';
 						<a href="#features" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Features</a>
 						<a href="#usecases" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Use Cases</a>
 						<a href="#reviews" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Reviews</a>
+						<a href="/blog" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Blog</a>
 						<a href="/faq" class="text-slate-300 hover:text-green-400 transition-colors font-medium">FAQ</a>
 						<a href="/other-apps" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Other Apps</a>
 					</div>
@@ -97,6 +98,7 @@ import '../styles/global.css';
 							<a href="#features" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Features</a>
 							<a href="#usecases" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Use Cases</a>
 							<a href="#reviews" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Reviews</a>
+							<a href="/blog" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Blog</a>
 							<a href="/faq" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">FAQ</a>
 							<a href="/other-apps" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Other Apps</a>
 							<a href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8" 
@@ -280,111 +282,101 @@ import '../styles/global.css';
 						<span class="text-green-400 font-semibold">advanced local analytics</span>
 					</p>
 				</div>
-				
-				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-					<!-- Feature Card 1 -->
-					<div class="group card-modern glass rounded-3xl p-8 relative overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-500/20 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="w-16 h-16 glass-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-								</svg>
+
+				<div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+					<!-- Chat Wrapped Feature -->
+					<a href="/blog/chat-wrapped-story-mode" class="group lg:col-span-2 bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/40 transition-all duration-300">
+						<div class="relative">
+							<div class="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+							<div class="aspect-[16/9] overflow-hidden">
+								<img
+									src="/features/chat-wrapped-story/combined-01-story+02-story+03-chat-timeline.webp"
+									alt="Chat Wrapped story highlights"
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+									loading="lazy"
+								/>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Message Analytics</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Deep dive into message patterns, participant activity, and conversation dynamics with beautiful visualizations.
-							</p>
 						</div>
-					</div>
-					
-					<!-- Feature Card 2 -->
-					<div class="group card-modern glass rounded-3xl p-8 relative overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/20 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="w-16 h-16 glass-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
-								</svg>
+						<div class="p-6">
+							<div class="flex items-center gap-2 mb-3">
+								<span class="inline-flex items-center px-3 py-1 bg-green-500/20 text-green-300 text-xs font-semibold rounded-full">Chat Wrapped</span>
+								<span class="inline-flex items-center px-3 py-1 bg-white/5 text-slate-300 text-xs rounded-full">Story mode</span>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Timeline Insights</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Interactive charts revealing when you're most active, peak conversation times, and messaging trends over time.
-							</p>
+							<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">Your chats, turned into a story</h3>
+							<p class="text-slate-300 leading-relaxed">Swipe through your most active days, conversation moments, and emoji personality in one visual flow.</p>
 						</div>
-					</div>
-					
-					<!-- Feature Card 3 -->
-					<div class="group card-modern glass rounded-3xl p-8 relative overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-500/20 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="w-16 h-16 glass-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z"/>
-								</svg>
+					</a>
+
+					<!-- Share Image -->
+					<a href="/blog/share-as-image" class="group bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/40 transition-all duration-300">
+						<div class="aspect-[4/3] overflow-hidden">
+							<img
+								src="/features/share-image/combined-01-share-image+02-share-image-scrolled.webp"
+								alt="Shareable chat stats image"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+								loading="lazy"
+							/>
+						</div>
+						<div class="p-6">
+							<div class="inline-flex items-center px-3 py-1 bg-emerald-500/20 text-emerald-200 text-xs font-semibold rounded-full mb-3">Share</div>
+							<h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">Share-ready recaps</h3>
+							<p class="text-slate-300 leading-relaxed">Generate a clean image that highlights the stats worth posting.</p>
+						</div>
+					</a>
+
+					<!-- Emoji personality -->
+					<a href="/blog/emoji-deep-dive" class="group bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/40 transition-all duration-300">
+						<div class="aspect-[4/3] overflow-hidden">
+							<img
+								src="/features/combined/combined-emoji-overview+emoji-per-person+emoji-deep-dive.webp"
+								alt="Emoji analysis views"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+								loading="lazy"
+							/>
+						</div>
+						<div class="p-6">
+							<div class="inline-flex items-center px-3 py-1 bg-green-500/20 text-green-200 text-xs font-semibold rounded-full mb-3">Emoji</div>
+							<h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">Emoji personality, decoded</h3>
+							<p class="text-slate-300 leading-relaxed">See who drives the vibe, the moods, and the emoji signatures.</p>
+						</div>
+					</a>
+
+					<!-- Overview + Time Analysis -->
+					<a href="/blog/overview-dashboard" class="group lg:col-span-2 bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/40 transition-all duration-300">
+						<div class="aspect-[16/9] overflow-hidden">
+							<img
+								src="/features/combined/combined-overview+day-analysis+week-analysis+emoji-overview.webp"
+								alt="Overview and time analysis"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+								loading="lazy"
+							/>
+						</div>
+						<div class="p-6">
+							<div class="flex items-center gap-2 mb-3">
+								<span class="inline-flex items-center px-3 py-1 bg-white/5 text-slate-300 text-xs rounded-full">Overview</span>
+								<span class="inline-flex items-center px-3 py-1 bg-white/5 text-slate-300 text-xs rounded-full">Time patterns</span>
 							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Emoji Intelligence</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Discover your emotional patterns through emoji usage, favorites, and sentiment analysis across conversations.
-							</p>
+							<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">The full rhythm, in one view</h3>
+							<p class="text-slate-300 leading-relaxed">Totals, peaks, daily and weekly shifts -- all visible at a glance.</p>
 						</div>
-					</div>
-					
-					<!-- Feature Card 4 -->
-					<div class="group card-modern glass rounded-3xl p-8 relative overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="w-16 h-16 glass-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-								</svg>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Response Analytics</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Uncover response patterns, identify quick responders, and find your chat's "ghosting champions" with precision timing.
-							</p>
+					</a>
+
+					<!-- Import + Onboarding -->
+					<a href="/blog/how-to-export-whatsapp-chat" class="group bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/40 transition-all duration-300">
+						<div class="aspect-[4/3] overflow-hidden">
+							<img
+								src="/features/combined/combined-import-whatsapp-export+onboarding-tutorial+chat-list+overview.webp"
+								alt="Import, onboarding, and chat list"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+								loading="lazy"
+							/>
 						</div>
-					</div>
-					
-					<!-- Feature Card 5 -->
-					<div class="group card-modern glass rounded-3xl p-8 relative overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="w-16 h-16 glass-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-								<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-								</svg>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Conversation Flow</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Analyze who initiates conversations, topic transitions, and communication patterns that define your relationships.
-							</p>
+						<div class="p-6">
+							<div class="inline-flex items-center px-3 py-1 bg-white/5 text-slate-300 text-xs rounded-full mb-3">Getting started</div>
+							<h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">From export to insights</h3>
+							<p class="text-slate-300 leading-relaxed">Export your chat, import once, and the rest is automatic.</p>
 						</div>
-					</div>
-					
-					<!-- Feature Card 6 - Chat Wrapped Highlight -->
-					<div class="group card-modern glass-green rounded-3xl p-8 relative overflow-hidden border-2 border-green-500/30">
-						<div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10"></div>
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/30 to-transparent rounded-full blur-2xl"></div>
-						<div class="relative z-10">
-							<div class="flex items-center mb-4">
-								<div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-									</svg>
-								</div>
-								<div class="ml-4">
-									<span class="inline-flex items-center px-3 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full">
-										✨ NEW
-									</span>
-								</div>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-white group-hover:text-green-400 transition-colors">Chat Wrapped</h3>
-							<p class="text-slate-300 leading-relaxed">
-								Your year in conversations! Beautiful, shareable insights inspired by Spotify Wrapped, showcasing your unique chat personality.
-							</p>
-						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -814,6 +806,9 @@ import '../styles/global.css';
 						Unlock the secrets of your WhatsApp conversations with beautiful analytics.
 					</p>
 					<div class="flex justify-center space-x-6 mb-8">
+						<a href="/blog" class="text-gray-400 hover:text-green-400 transition-colors">
+							Blog
+						</a>
 						<a href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8" class="text-gray-400 hover:text-green-400 transition-colors">
 							App Store
 						</a>

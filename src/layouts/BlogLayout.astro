@@ -1,0 +1,184 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title = 'WhatStats Blog',
+  description = 'Tips, insights, and updates about WhatsApp chat analytics and the WhatStats app.',
+  image = '/og-image.jpg',
+  type = 'article',
+} = Astro.props;
+
+const canonical = `https://whatstatistics.com${Astro.url.pathname}`;
+const fullTitle = title === 'WhatStats Blog' ? title : `${title} | WhatStats Blog`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/jpeg" href="/icon.jpg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="WhatStats" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- App Store -->
+    <meta name="apple-itunes-app" content="app-id=1481007233" />
+
+    <!-- Plausible Analytics -->
+    <script defer data-domain="whatstatistics.com" src="https://plausible.home.juli.sh/js/script.js"></script>
+  </head>
+  <body class="text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="/" class="flex items-center space-x-3">
+            <img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg" />
+            <span class="text-xl font-bold gradient-text">WhatStats</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Home</a>
+            <a href="/#features" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Features</a>
+            <a href="/#usecases" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Use Cases</a>
+            <a href="/#reviews" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Reviews</a>
+            <a href="/blog" class="text-white hover:text-green-400 transition-colors font-medium">Blog</a>
+            <a href="/faq" class="text-slate-300 hover:text-green-400 transition-colors font-medium">FAQ</a>
+            <a href="/other-apps" class="text-slate-300 hover:text-green-400 transition-colors font-medium">Other Apps</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden glass p-2 rounded-xl"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg id="menu-icon" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-slate-900 border-t border-white/10">
+          <div class="px-6 py-4 space-y-4">
+            <a href="/" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Home</a>
+            <a href="/#features" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Features</a>
+            <a href="/#usecases" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Use Cases</a>
+            <a href="/#reviews" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Reviews</a>
+            <a href="/blog" class="block text-white hover:text-green-400 transition-colors font-medium py-2">Blog</a>
+            <a href="/faq" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">FAQ</a>
+            <a href="/other-apps" class="block text-slate-300 hover:text-green-400 transition-colors font-medium py-2">Other Apps</a>
+            <a
+              href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8"
+              class="block bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl px-4 py-3 text-center mt-4"
+            >
+              Download App
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pt-24">
+      <slot />
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 border-t border-gray-800 mt-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-6">
+            <img src="/icon.jpg" alt="WhatStats logo" class="w-10 h-10 rounded-lg mr-3" />
+            <span class="text-2xl font-bold text-white">WhatStats</span>
+          </div>
+          <p class="text-gray-400 mb-6">
+            Unlock the secrets of your WhatsApp conversations with beautiful analytics.
+          </p>
+          <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=Website&mt=8" class="text-gray-400 hover:text-green-400 transition-colors">
+              App Store
+            </a>
+            <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="text-gray-400 hover:text-green-400 transition-colors">
+              Terms of Use
+            </a>
+          </div>
+          <p class="text-gray-500 text-sm">
+            © 2024 WhatStats. All rights reserved. Privacy-focused WhatsApp analytics.
+          </p>
+          <p class="text-gray-600 text-xs mt-2 max-w-2xl mx-auto">
+            WhatStats is not affiliated with, endorsed by, or sponsored by WhatsApp Inc. or Meta Platforms, Inc.
+            WhatsApp is a trademark of WhatsApp Inc. This app analyzes exported chat data locally on your device.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuButton.addEventListener('click', function() {
+          const isHidden = mobileMenu.classList.contains('hidden');
+
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+          } else {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"], a[href^="/"]');
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
